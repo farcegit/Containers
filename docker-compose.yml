@@ -1,0 +1,21 @@
+version: '3.0'
+networks:
+     CarWashNetwork2 :
+services:
+  carwashdb2:
+    container_name: carwashdb2
+    hostname: carwashdb
+    image: mysql
+    networks:
+      - CarWashNetwork2
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: devopsiscool
+  carwasweb2 :
+      container_name : carwasweb2
+      image: franarcecr/carwashweb
+      ports: 
+        - 80:80
+      networks:
+      - CarWashNetwork2
